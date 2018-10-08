@@ -3,8 +3,8 @@ import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment'
 
-let test = 0
 let originTime = moment()
+
 
 export default class DatePicker extends React.Component {
   constructor(){
@@ -20,8 +20,7 @@ export default class DatePicker extends React.Component {
       isVisible: false,
       chosenDate: moment(datetime).format('dddd Do MMM')
     })
-    originTime = datetime,
-    test = 0
+    originTime = datetime
   }
 
   hidePicker = () => {
@@ -35,18 +34,16 @@ export default class DatePicker extends React.Component {
     })
   }
   upOne = () =>{
-    test = test + 1
-      let date = moment(originTime).add(test, 'days')
+      originTime = moment(originTime).add(1, 'day')
       this.setState({
-        chosenDate: moment(date).format('dddd Do MMM')
+        chosenDate: moment(originTime).format('dddd Do MMM')
       })
 
   }
   downOne = () =>{
-    test = test - 1
-    let date = moment(originTime).add(test, 'days')
+    originTime = moment(originTime).subtract(1, 'day')
       this.setState({
-        chosenDate: moment(date).format('dddd Do MMM')
+        chosenDate: moment(originTime).format('dddd Do MMM')
       })
 
   }
