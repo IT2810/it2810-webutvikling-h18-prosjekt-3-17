@@ -53,7 +53,7 @@ export default class DatePicker extends React.Component {
     this.props.streakBreak(originTime)
   }
 
-
+   
   render() {
     return (
       <View style={styles.container}>
@@ -87,8 +87,9 @@ export default class DatePicker extends React.Component {
 
 const styles = StyleSheet.create({
   button:{
-    width:300,
-    height: 100,
+    width:200,
+    height: 75,
+    borderRadius: 30,
     backgroundColor: '#330066',
     justifyContent: 'center',
     marginTop: 15
