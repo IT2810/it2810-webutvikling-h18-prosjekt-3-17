@@ -20,7 +20,8 @@ export default class DatePicker extends React.Component {
       isVisible: false,
       chosenDate: moment(datetime).format('dddd Do MMM')
     })
-    originTime = datetime
+    originTime = moment(datetime),
+    this.props.giveDate(originTime)
   }
 
   hidePicker = () => {
@@ -37,15 +38,19 @@ export default class DatePicker extends React.Component {
       originTime = moment(originTime).add(1, 'day')
       this.setState({
         chosenDate: moment(originTime).format('dddd Do MMM')
-      })
+      }),
+      this.props.giveDate(originTime)
 
   }
   downOne = () =>{
     originTime = moment(originTime).subtract(1, 'day')
       this.setState({
         chosenDate: moment(originTime).format('dddd Do MMM')
-      })
-
+      }),
+      this.props.giveDate(originTime)
+    }
+  streakRip = () =>{
+    this.props.streakBreak(originTime)
   }
 
 
@@ -53,6 +58,9 @@ export default class DatePicker extends React.Component {
     return (
       <View style={styles.container}>
 
+        <TouchableOpacity style={styles.button} onPress={this.streakRip}>
+          <Text style={styles.text}>Break</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={this.showPicker}>
           <Text style={styles.text}>{this.state.chosenDate}</Text>
