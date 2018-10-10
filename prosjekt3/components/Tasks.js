@@ -50,7 +50,7 @@ export default class Tasks extends React.Component {
         <Text style={styles.header}>{this.state.testText}</Text>
         <TextInput
         ref={this.myTextInput}
-        style={{height: 40, borderColor: 'gray', borderWidth: 1, marginRight: 20}}
+        style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300}}
         onSubmitEditing={(event) => this.handleTextInput( event.nativeEvent.text )}
         value={this.state.inputText}
         />
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     paddingLeft: 20,
+    paddingRight: 20,
   },
 
   text: {

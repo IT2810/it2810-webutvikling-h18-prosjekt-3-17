@@ -4,6 +4,7 @@ import DatePicker from './Date';
 import moment from 'moment';
 
 
+
 export default class Streak extends React.Component {
   constructor(){
     super()
@@ -38,7 +39,7 @@ export default class Streak extends React.Component {
       <View style={styles.container}>
 
         <DatePicker giveDate={this.getDate.bind(this)} streakBreak={this.streakReset.bind(this)}/>
-        <Text>{this.state.days}</Text>
+        <Text> Streak: {this.state.days} </Text>
 
       </View>
     );
@@ -51,5 +52,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'yellow'
   }
 });
