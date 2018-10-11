@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { StyleSheet, FlatList, Text, View } from 'react-native';
-import Tasks from './components/Tasks'
-import DatePicker from './components/Date';
-import Streak from './components/Streak';
+import Tasks from './components/Tasks';
+//import DatePicker from './components/Date';
+//import Streak from './components/Streak';
+import Appointments from './components/Appointments';
 
 export default class App extends React.Component {
 
@@ -11,8 +12,9 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Tasks />
-      <Streak/>
+      <Tasks style={{flex: 1}} />
+      <Text></Text>
+      <Appointments style={{flex: 1}} />
       </View>
     );
   }

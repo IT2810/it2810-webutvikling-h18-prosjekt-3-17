@@ -53,7 +53,7 @@ export default class DatePicker extends React.Component {
     this.props.streakBreak(originTime)
   }
 
-   
+
   render() {
     return (
       <View style={styles.container}>
