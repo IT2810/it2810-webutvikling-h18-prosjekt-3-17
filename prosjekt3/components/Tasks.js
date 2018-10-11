@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Check from './Check'
+import DeleteButton from './DeleteButton'
 
 export default class Tasks extends React.Component {
   constructor(){
@@ -9,19 +10,18 @@ export default class Tasks extends React.Component {
     this.state = {
       testText: 'Tasks',
       inputText: null,
-      todos: []
+      todos: [],
+      nextKey: 0
     }
     this.myTextInput = React.createRef();
   }
 
 
   handlePressButton(){
-    console.log("here");
     alert('press');
   }
 
   handlePressCheck = (el) => {
-    console.log("here");
     const todos = this.state.todos.map(element => {
       if(element.key === el.key) {
         element.checked = !element.checked;
@@ -34,13 +34,31 @@ export default class Tasks extends React.Component {
 
   handleTextInput(txt){
     if (txt != 0){
-      todo = {key: JSON.stringify(this.state.todos.length), txt: txt, checked: false};
-      todos2 = Array.from(this.state.todos)
+      todo = {key: JSON.stringify(this.state.nextKey), txt: txt, checked: false};
+      this.setState({nextKey : (this.state.nextKey+1)});
+      todos2 = Array.from(this.state.todos);
       todos2.push(todo);
       this.setState({todos : todos2})
-      console.log(this.state.todos);
       this.myTextInput.current.clear();
     }
+  }
+
+  deleteTask = (i) => {
+    todos2 = Array.from(this.state.todos);
+    if (todos2[this.returnIndex(i)] === i){
+      todos2.splice(this.returnIndex(i), 1);
+    }
+    this.setState({todos: todos2});
+
+  }
+
+  returnIndex(el){
+    for (i = 0; i < this.state.todos.length; i++){
+      if(this.state.todos[i] === el){
+        return i;
+      }
+    }
+    return null;
   }
 
 
@@ -56,12 +74,19 @@ export default class Tasks extends React.Component {
         />
         <FlatList style={styles.list} data={this.state.todos}
             renderItem={({item}) =>
-              <TouchableWithoutFeedback onPress={() => this.handlePressCheck(item)}>
+              <View style={styles.check}>
+              <TouchableWithoutFeedback onPress={() => this.handlePressCheck(item)}  >
               <View style={styles.check}>
               <Check checked={item.checked}/>
               <Text style={styles.text}> {item.txt}</Text>
               </View>
               </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => this.deleteTask(item) } >
+              <View style={{flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}}>
+              <DeleteButton />
+              </View>
+              </TouchableWithoutFeedback>
+              </View>
           }
         />
       </View>
@@ -74,7 +99,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 20
+
   },
 
   text: {
