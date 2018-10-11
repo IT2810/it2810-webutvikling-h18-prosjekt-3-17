@@ -36,24 +36,11 @@ export default class Streak extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
 
-        <DatePicker giveDate={this.getDate.bind(this)} streakBreak={this.streakReset.bind(this)}/>
-        <Text> Streak: {this.state.days} </Text>
+        <DatePicker giveDate={this.getDate.bind(this)} streakBreak={this.streakReset.bind(this)} streak={this.state.days}/>
 
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: 'yellow'
-  }
-});

@@ -11,8 +11,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Streak/>
-      <Tasks />
+        <Streak/> 
+        <Tasks/>
       </View>
     );
   }
@@ -26,8 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  test: {
-    backgroundColor: 'yellow'
   }
 });

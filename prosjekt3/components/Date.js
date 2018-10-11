@@ -2,23 +2,23 @@ import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment'
+import {Octicons} from '@expo/vector-icons'
 
 let originTime = moment()
-
 
 export default class DatePicker extends React.Component {
   constructor(){
     super()
     this.state = {
       isVisible: false,
-      chosenDate: moment().format('dddd Do MMMM YYYY'),
+      chosenDate: moment().format('dddd Do [\n] MMMM YYYY'),
     }
 
   }
   handlePicker = (datetime) => {
     this.setState({
       isVisible: false,
-      chosenDate: moment(datetime).format('dddd Do MMMM YYYY')
+      chosenDate: moment(datetime).format('dddd Do [\n] MMMM YYYY')
     })
     originTime = moment(datetime),
     this.props.giveDate(originTime)
@@ -37,7 +37,7 @@ export default class DatePicker extends React.Component {
   upOne = () =>{
       originTime = moment(originTime).add(1, 'day')
       this.setState({
-        chosenDate: moment(originTime).format('dddd Do MMMM YYYY')
+        chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY')
       }),
       this.props.giveDate(originTime)
 
@@ -45,7 +45,7 @@ export default class DatePicker extends React.Component {
   downOne = () =>{
     originTime = moment(originTime).subtract(1, 'day')
       this.setState({
-        chosenDate: moment(originTime).format('dddd Do MMMM YYYY')
+        chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY')
       }),
       this.props.giveDate(originTime)
     }
@@ -58,13 +58,12 @@ export default class DatePicker extends React.Component {
     return (
       <View style={styles.container}>
         <View style= {styles.datepicker}>
-        <TouchableOpacity style={styles.button} onPress={this.streakRip}>
-          <Text style={styles.text}>Break</Text>
-        </TouchableOpacity>
+          <View><Text style={styles.arrows} onPress={this.downOne}>←</Text></View>
+          <View><Text onPress={this.showPicker} style={styles.date}>{this.state.chosenDate}</Text></View>
+          <View><Text style={styles.arrows} onPress={this.upOne}>→</Text></View>
+          <View style= {styles.flexStreak}><Text style={styles.streak}> <Octicons name="flame" size={20} color='crimson'/> {this.props.streak}  </Text></View>
+        </View>
 
-        <TouchableOpacity style={styles.button} onPress={this.showPicker} id='test'>
-          <Text style={styles.text}>{this.state.chosenDate}</Text>
-        </TouchableOpacity>
 
         <DateTimePicker
           isVisible={this.state.isVisible}
@@ -73,50 +72,39 @@ export default class DatePicker extends React.Component {
           datePickerModeAndroid={'spinner'}
         />
       </View>
-
-      <View style={styles.arrows}>
-        <TouchableOpacity style={styles.button2} onPress={this.upOne}>
-          <Text style={styles.text2}>→</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button2} onPress={this.downOne}>
-          <Text style={styles.text2}>←</Text>
-        </TouchableOpacity>
-      </View>
-      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  button:{
-    width:200,
-    height: 75,
-    borderRadius: 30,
-    backgroundColor: '#330066',
-    justifyContent: 'center',
-    position: 'relative',
-    marginTop: 15,
-  },
-  text:{
-    fontSize:18,
+  arrows:{
+    fontSize:40,
     color: 'white',
-    textAlign:'center'
+    paddingLeft: 15,
+    paddingRight: 15,
   },
-  button2:{
-    display: 'flex',
-    width: 100,
-    height: 30,
-    backgroundColor: '#BBBBBB',
+  datepicker:{
+    width: 430,
+    maxHeight: 60,
+    backgroundColor: 'black',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  date:{
+    paddingTop: 5,
+    fontSize:21,
+    color: 'white',
+  },
+  streak:{
+    paddingTop: 20,
+    fontSize:19,
+    color: 'white',
+  },
+  flexStreak:{
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 15
-  },
-  text2:{
-    fontSize:50,
-    color: 'black',
-    textAlign:'center',
-    paddingBottom: 20
-  },
-
+    }
 
 });
