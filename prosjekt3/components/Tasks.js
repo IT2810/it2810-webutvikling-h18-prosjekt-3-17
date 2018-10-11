@@ -100,10 +100,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20,
 <<<<<<< HEAD
+<<<<<<< HEAD
     paddingRight: 20
 =======
     paddingRight: 20,
 >>>>>>> 8ecf44007e476d20ffae44dd75926a441ad87f10
+=======
+    paddingRight: 20
+
+>>>>>>> 69c82fe7f76481e9b68590fba25dd9d4a822ad42
   },
 
   text: {
