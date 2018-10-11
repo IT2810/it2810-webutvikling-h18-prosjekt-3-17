@@ -12,8 +12,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Tasks style={{flex: 1}} />
-      <Text></Text>
+      <Streak/>
+      <Tasks />
       <Appointments style={{flex: 1}} />
       </View>
     );
@@ -24,10 +24,12 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     paddingTop: 20,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  test: {
+    backgroundColor: 'yellow'
   }
 });

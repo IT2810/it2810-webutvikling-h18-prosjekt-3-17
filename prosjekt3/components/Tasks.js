@@ -99,7 +99,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     paddingLeft: 20,
+<<<<<<< HEAD
     paddingRight: 20
+=======
+    paddingRight: 20,
+>>>>>>> 8ecf44007e476d20ffae44dd75926a441ad87f10
   },
 
   text: {
