@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
-import DateTimePicker from 'react-native-modal-datetime-picker';
+//import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment'
 
 let originTime = moment()
 
 
 export default class DatePicker extends React.Component {
-  constructor(){
+/*  constructor(){
     super()
     this.state = {
       isVisible: false,
@@ -117,6 +117,5 @@ const styles = StyleSheet.create({
     textAlign:'center',
     paddingBottom: 20
   },
-
-
+*/
 });

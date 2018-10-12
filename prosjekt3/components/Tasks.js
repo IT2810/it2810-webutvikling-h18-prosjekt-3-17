@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Check from './Check'
 import DeleteButton from './DeleteButton'
@@ -64,7 +64,7 @@ export default class Tasks extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.header}>{this.state.testText}</Text>
         <TextInput
         ref={this.myTextInput}
@@ -89,7 +89,7 @@ export default class Tasks extends React.Component {
               </View>
           }
         />
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -99,16 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     paddingLeft: 20,
-<<<<<<< HEAD
-<<<<<<< HEAD
     paddingRight: 20
-=======
-    paddingRight: 20,
->>>>>>> 8ecf44007e476d20ffae44dd75926a441ad87f10
-=======
-    paddingRight: 20
-
->>>>>>> 69c82fe7f76481e9b68590fba25dd9d4a822ad42
   },
 
   text: {
@@ -117,7 +108,7 @@ const styles = StyleSheet.create({
 
   header: {
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold'
   },
   check: {

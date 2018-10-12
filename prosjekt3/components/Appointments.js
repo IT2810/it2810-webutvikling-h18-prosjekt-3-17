@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 
   header: {
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold'
   },
   check: {

@@ -12,17 +12,10 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-<<<<<<< HEAD
-      <Streak/>
-      <Tasks />
-      <Appointments style={{flex: 1}} />
-=======
 
-      <Streak/>
       <Tasks />
       <Appointments style={{flex: 1}} />
 
->>>>>>> 69c82fe7f76481e9b68590fba25dd9d4a822ad42
       </View>
     );
   }

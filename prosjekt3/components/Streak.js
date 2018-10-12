@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import DatePicker from './Date';
+//import DatePicker from './Date';
 import moment from 'moment';
 
 
 
 export default class Streak extends React.Component {
-  constructor(){
+/*  constructor(){
     super()
     this.state = {
     streakStart: moment().startOf('day'),
@@ -55,5 +55,5 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'yellow'
-  }
+  }*/
 });
