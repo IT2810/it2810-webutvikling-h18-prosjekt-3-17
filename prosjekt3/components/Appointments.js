@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView, AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DeleteButton from './DeleteButton'
 
@@ -33,6 +33,7 @@ export default class Appointments extends React.Component {
       this.setState({currHour : '00'});
       this.setState({currMinute : '00'});
     }
+    this._storeData(todos2)
   }
 
   deleteAppointment = (i) => {
@@ -41,6 +42,7 @@ export default class Appointments extends React.Component {
       todos2.splice(this.returnIndex(i), 1);
     }
     this.setState({todos: todos2});
+    this._storeData(todos2)
 
   }
 
@@ -60,6 +62,62 @@ export default class Appointments extends React.Component {
   handleMinute(el){
     this.setState({currMinute : el})
   }
+
+  async componentDidMount(){
+    let todos = await this._retrieveTodos()
+    let nextKey = await this._retrieveKeys()
+    console.log("Appointments: ")
+    console.log(todos)
+    if (todos === undefined){
+        this.setState({todos : []})
+    }
+    else{
+      this.setState({todos : todos})
+    }
+    if (nextKey === undefined){
+        this.setState({nextKey : 0})
+    }
+    else{
+      this.setState({nextKey : nextKey})
+    }
+  }
+
+  _storeData = async (todos) => {
+  try {
+    let stateString = JSON.stringify(todos)
+    await AsyncStorage.setItem('appointments', stateString);
+    await AsyncStorage.setItem('appNextKey', JSON.stringify(this.state.nextKey));
+    console.log(stateString);
+  } catch (error) {
+    console.log('ERROR storing')
+  }
+}
+
+_retrieveTodos = async () => {
+  try {
+    const value = await AsyncStorage.getItem('appointments');
+    if (value !== null) {
+      todos2 = JSON.parse(value)
+      return todos2
+    }
+   } catch (error) {
+     console.log('ERROR retrieveing')
+     return null
+   }
+}
+
+_retrieveKeys = async () => {
+  try {
+    const value = await AsyncStorage.getItem('appNextKey');
+    if (value !== null) {
+      nextKey = JSON.parse(value)
+      return nextKey
+    }
+   } catch (error) {
+     console.log('ERROR retrieveing')
+     return null
+   }
+}
 
   render() {
     return (
