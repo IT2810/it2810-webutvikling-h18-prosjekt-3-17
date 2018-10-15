@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   date:{
+    width: 160,
     paddingTop: 5,
     fontSize:21,
     color: 'white',
