@@ -6,17 +6,17 @@ import Tasks from './components/Tasks';
 import Goals from "./components/Goals";
 import GoalModal from "./components/GoalModal";
 import Appointments from './components/Appointments';
+import Goals from './components/Goals';
 
 export default class App extends React.Component {
 
-
+//rendering all the components that makes up the page
   render() {
     return (
       <View style={styles.container}>
 
-  
+      <Streak/>
       <GoalModal/>
-
       <Tasks />
       <Appointments style={{flex: 1}} />
 

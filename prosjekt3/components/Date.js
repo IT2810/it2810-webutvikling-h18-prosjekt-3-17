@@ -4,10 +4,16 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment'
 import {Octicons} from '@expo/vector-icons'
 
+//imports a DateTimePicker library witch makes the usage of a DatePicker easier
+//imports the moment library that makes foramting and handeling of date objects a lot easier
+//Imports a Flame icon as a streak icon
+
 let originTime = moment()
+//initializes an unformated date object
 
 export default class DatePicker extends React.Component {
   constructor(){
+    //sets witch date it is today and puts the DatePicker pop up to false
     super()
     this.state = {
       isVisible: false,
@@ -16,44 +22,47 @@ export default class DatePicker extends React.Component {
 
   }
   handlePicker = (datetime) => {
+    //when a date is choosen:
     this.setState({
-      isVisible: false,
-      chosenDate: moment(datetime).format('dddd Do [\n] MMMM YYYY')
+      isVisible: false, //sets the pop up to hidden
+      chosenDate: moment(datetime).format('dddd Do [\n] MMMM YYYY')//updates the choosen date
     })
-    originTime = moment(datetime),
+    originTime = moment(datetime), //updates unformated date
     this.props.giveDate(originTime)
   }
 
   hidePicker = () => {
+    //if you exit the datepicker without choosing a new date
     this.setState({
-      isVisible: false
+      isVisible: false //sets the pop up to hidden
     })
   }
   showPicker = () => {
+    // when the date object is pushed
     this.setState({
-      isVisible: true
+      isVisible: true //sets the pop up to visable
     })
   }
   upOne = () =>{
-      originTime = moment(originTime).add(1, 'day')
+    //using the arrows to choose one day forward
+      originTime = moment(originTime).add(1, 'day') // sets unformated date to the next day
       this.setState({
-        chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY')
+        chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY') //updates choosen date to new date
       }),
       this.props.giveDate(originTime)
 
   }
   downOne = () =>{
-    originTime = moment(originTime).subtract(1, 'day')
+    originTime = moment(originTime).subtract(1, 'day') // sets unformated date to the day before
       this.setState({
-        chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY')
+        chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY') //updates choosen date to day before
       }),
       this.props.giveDate(originTime)
     }
-  streakRip = () =>{
-    this.props.streakBreak(originTime)
-  }
 
 
+    //renders the headder banner with upOne,downOne, datepicker and streak
+    //initializes the functions nessesary to opperate the DatePicker
   render() {
     return (
       <View style={styles.container}>
@@ -92,6 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   date:{
+    width: 160,
     paddingTop: 5,
     fontSize:21,
     color: 'white',
