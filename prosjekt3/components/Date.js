@@ -100,11 +100,10 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   datepicker:{
-    width: 430,
+    maxHeight: 85,
     paddingTop: 20,
-    maxHeight: 80,
+    maxHeight: 85,
     backgroundColor: 'black',
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
@@ -125,6 +124,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   container:{
+    flex:1,
     alignItems: 'center',
     justifyContent: 'center',
   }
