@@ -2,7 +2,9 @@ import React from 'react';
 
 import { StyleSheet, FlatList, Text, View } from 'react-native';
 import Tasks from './components/Tasks';
-import Streak from './components/Streak';
+// import Streak from './components/Streak';
+import Goals from "./components/Goals";
+import GoalModal from "./components/GoalModal";
 import Appointments from './components/Appointments';
 import Goals from './components/Goals';
 
@@ -14,7 +16,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
 
       <Streak/>
-      <Goals/>
+      <GoalModal/>
       <Tasks />
       <Appointments style={{flex: 1}} />
 
