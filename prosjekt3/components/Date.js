@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment'
+import Tasks from './Tasks';
+import Appointments from './Appointments';
+import Goals from './Goals'
+import GoalModal from './GoalModal'
 import {Octicons} from '@expo/vector-icons'
 
 //imports a DateTimePicker library witch makes the usage of a DatePicker easier
@@ -70,7 +74,7 @@ export default class DatePicker extends React.Component {
           <View><Text style={styles.arrows} onPress={this.downOne}>←</Text></View>
           <View><Text onPress={this.showPicker} style={styles.date}>{this.state.chosenDate}</Text></View>
           <View><Text style={styles.arrows} onPress={this.upOne}>→</Text></View>
-          <View style= {styles.flexStreak}><Text style={styles.streak}> <Octicons name="flame" size={20} color='crimson'/> {this.props.streak}  </Text></View>
+          <View style= {styles.flexStreak}><Text style={styles.streak}> <Octicons name="flame" size={20} color='crimson'/> 1 </Text></View>
         </View>
 
 
@@ -80,6 +84,9 @@ export default class DatePicker extends React.Component {
           onCancel={this.hidePicker}
           datePickerModeAndroid={'spinner'}
         />
+        <GoalModal/>
+        <Tasks />
+        <Appointments style={{flex: 1}} />
       </View>
     );
   }
@@ -94,7 +101,8 @@ const styles = StyleSheet.create({
   },
   datepicker:{
     width: 430,
-    maxHeight: 60,
+    paddingTop: 20,
+    maxHeight: 80,
     backgroundColor: 'black',
     flex: 1,
     flexDirection: 'row',
@@ -115,6 +123,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    }
+  },
+  container:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 
 });

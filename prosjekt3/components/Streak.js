@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import DatePicker from './Date';
 import moment from 'moment';
+import Goals from './Goals'
 //imports Date and the momnet library
 
 
