@@ -8,7 +8,8 @@ export default class Goals extends React.Component {
     this.state = {
       goalOne: null,
       goalTwo: null,
-      goalThree: null
+      goalThree: null,
+      // modalVisible: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +21,7 @@ export default class Goals extends React.Component {
     } catch (error) {
       alert(error)
     }
+    // this.setState(modalVisible: false);
   }
 
   componentDidMount = async() =>{
