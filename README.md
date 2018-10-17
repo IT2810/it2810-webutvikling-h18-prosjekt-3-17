@@ -3,13 +3,16 @@
 ##Appen
 I dette prosjektet valgte vi å lage en app som skal fungere som en personal manager. Appen kom til å inneholde 4 hoved element. 
 
-*Datovelger: kan velge spesifikk dato ved hjelp av en kalender eller  
+-Datovelger: kan velge spesifikk dato ved hjelp av en kalender eller  
  kunne bruke piler for å gå fram og tilbake
-*Tasks: liste som ein kan skrive inn ting ein må gjere og hake dei 
+
+-Tasks: liste som ein kan skrive inn ting ein må gjere og hake dei 
  Av når det er gjordt. Også mogleg å slette dei.
-*Appointments: ei liste der ein skriv inn eit tidspunkt og ein ting en 
+
+-Appointments: ei liste der ein skriv inn eit tidspunkt og ein ting en 
  skal på det tidspunktet. Også mogleg å slette disse 
-*Daily Goals: ei «fast» list som er lik for kvar dag og visst ein klarer
+
+-Daily Goals: ei «fast» list som er lik for kvar dag og visst ein klarer
  dagens mål får ein legge til ein på streaken sin som kjem til å vise kor 
  lenge ein har holdt Dayily Goals gående. Denne lista kjem til å 
  inneholde ein skritteller muligheit og 2 andre som ein kan vlge sjølv
