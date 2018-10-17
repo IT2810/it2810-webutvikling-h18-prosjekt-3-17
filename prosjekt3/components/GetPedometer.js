@@ -48,11 +48,11 @@ export default class GetPedometer extends React.Component {
      this.setState({
        currentStepCount: result.steps
      });
-   });
+   }); 
 
-   if (GoogleApiClient != null) {
-     GoogleApiClient.connect();
-   }
+   // if (GoogleApiClient != null) {
+   //   GoogleApiClient.connect();
+   // }
 
    const end = new Date();
    const start = new Date();
@@ -70,10 +70,10 @@ export default class GetPedometer extends React.Component {
  };
 
  _unsubscribe = () => {
-   if ((GoogleApiClient != null || GoogleApiClient === 0) && GoogleApiClient.isConnected()){
-     GoogleApiClient.stopAutoManage(Activity(), context);
-     GoogleApiClient.disconnect();
-   }
+   // if ((GoogleApiClient != null || GoogleApiClient === 0) && GoogleApiClient.isConnected()){
+   //   GoogleApiClient.stopAutoManage(Activity(), context);
+   //   GoogleApiClient.disconnect();
+   // }
    this._subscription && this._subscription.remove();
    this._subscription = null;
  };
