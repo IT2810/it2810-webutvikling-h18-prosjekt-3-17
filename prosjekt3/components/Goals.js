@@ -2,6 +2,7 @@ import Expo from "expo";
 import React from "react";
 import {Text, View, TextInput, Button, AsyncStorage} from "react-native";
 
+//A class that lets you add and change your personal motivational goals
 export default class Goals extends React.Component {
   constructor(props){
     super(props);
