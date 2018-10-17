@@ -22,6 +22,7 @@ export default class Tasks extends React.Component {
   }
 
   handlePressCheck = (el) => {
+    this.setState({todos : this._retrieveTodos()})
     const todos = this.state.todos.map(element => {
       if(element.key === el.key) {
         element.checked = !element.checked;
@@ -34,10 +35,12 @@ export default class Tasks extends React.Component {
   }
 
   handleTextInput(txt){
+    this.setState({todos : this._retrieveTodos()})
+
     if (txt != 0){
       todo = {key: JSON.stringify(this.state.nextKey), txt: txt, checked: false};
       this.setState({nextKey : (this.state.nextKey+1)});
-      todos2 = Array.from(this.state.todos);
+      todos2 = Array.from(this._retrieveTodos());
       todos2.push(todo);
       this.setState({todos : todos2})
 
@@ -47,6 +50,7 @@ export default class Tasks extends React.Component {
   }
 
   deleteTask = (i) => {
+    this.setState({todos : this._retrieveTodos()})
     todos2 = Array.from(this.state.todos);
     if (todos2[this.returnIndex(i)] === i){
       todos2.splice(this.returnIndex(i), 1);
@@ -65,43 +69,34 @@ export default class Tasks extends React.Component {
     return null;
   }
 
-  async componentDidMount(){
-    let todos = await this._retrieveTodos()
-    let nextKey = await this._retrieveKeys()
-    console.log("Todos: ")
-    console.log(todos)
-    if (todos === undefined){
-        this.setState({todos : []})
-    }
-    else{
-      this.setState({todos : todos})
-    }
-    if (nextKey === undefined){
-        this.setState({nextKey : 0})
-    }
-    else{
-      this.setState({nextKey : nextKey})
+  componentDidUpdate(){
+    let todos = this._retrieveTodos()
+    let nextKey = this._retrieveKeys()
+    if(todos !== this.state.todos){
+      if (todos === undefined){
+          this.setState({todos : []})
+      }
+      else{
+        this.setState({todos : todos})
+      }
+      if (nextKey === undefined){
+          this.setState({nextKey : 0})
+      }
+      else{
+        this.setState({nextKey : nextKey})
+      }
     }
   }
 
-  _storeData = async (todos) => {
-  try {
-    let stateString = JSON.stringify(todos)
-    await AsyncStorage.setItem('todos', stateString);
-    await AsyncStorage.setItem('toDoNextKey', JSON.stringify(this.state.nextKey));
-    console.log(stateString);
-  } catch (error) {
-    console.log('ERROR storing')
+  _storeData(todos){
+    this.props.giveTasks(todos)
   }
-}
 
-_retrieveTodos = async () => {
+_retrieveTodos(){
   try {
-    const value = await AsyncStorage.getItem('todos');
+    const value = this.props.taskList;
     if (value !== null) {
-      todos2 = JSON.parse(value)
-      return todos2
-
+      return value
     }
    } catch (error) {
      console.log('ERROR retrieveing')
@@ -109,12 +104,11 @@ _retrieveTodos = async () => {
    }
 }
 
-_retrieveKeys = async () => {
+_retrieveKeys(){
   try {
-    const value = await AsyncStorage.getItem('toDoNextKey');
+    const value = this.props.nextKey;
     if (value !== null) {
-      nextKey = JSON.parse(value)
-      return nextKey
+      return value
     }
    } catch (error) {
      console.log('ERROR retrieveing')
@@ -161,6 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20,
     paddingRight: 20,
+    paddingTop: 20
   },
 
   text: {

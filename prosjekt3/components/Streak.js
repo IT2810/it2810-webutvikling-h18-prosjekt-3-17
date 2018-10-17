@@ -28,7 +28,8 @@ export default class Streak extends React.Component {
 
   render() {
     return (
-      <View style={{flex:1}}>
+      <View style={{flex: 1}}>
+
 
         <DatePicker streak={this.state.days}/>
 

@@ -23,6 +23,7 @@ export default class Appointments extends React.Component {
   }
 
   handleTextInput(txt){
+    this.setState({todos : this._retrieveTodos()})
     if (txt != 0){
       todo = {key: JSON.stringify(this.state.nextKey), txt: txt, hour: this.state.currHour, minute: this.state.currMinute};
       this.setState({nextKey : (this.state.nextKey+1)});
@@ -37,6 +38,7 @@ export default class Appointments extends React.Component {
   }
 
   deleteAppointment = (i) => {
+    this.setState({todos : this._retrieveTodos()})
     todos2 = Array.from(this.state.todos);
     if (todos2[this.returnIndex(i)] === i){
       todos2.splice(this.returnIndex(i), 1);
@@ -63,61 +65,52 @@ export default class Appointments extends React.Component {
     this.setState({currMinute : el})
   }
 
-  async componentDidMount(){
-    let todos = await this._retrieveTodos()
-    let nextKey = await this._retrieveKeys()
-    console.log("Appointments: ")
-    console.log(todos)
-    if (todos === undefined){
-        this.setState({todos : []})
-    }
-    else{
-      this.setState({todos : todos})
-    }
-    if (nextKey === undefined){
-        this.setState({nextKey : 0})
-    }
-    else{
-      this.setState({nextKey : nextKey})
+  componentDidUpdate(){
+    let todos = this._retrieveTodos()
+    let nextKey = this._retrieveKeys()
+    if(todos !== this.state.todos){
+      if (todos === undefined){
+          this.setState({todos : []})
+      }
+      else{
+        this.setState({todos : todos})
+      }
+      if (nextKey === undefined){
+          this.setState({nextKey : 0})
+      }
+      else{
+        this.setState({nextKey : nextKey})
+      }
     }
   }
 
-  _storeData = async (todos) => {
-  try {
-    let stateString = JSON.stringify(todos)
-    await AsyncStorage.setItem('appointments', stateString);
-    await AsyncStorage.setItem('appNextKey', JSON.stringify(this.state.nextKey));
-    console.log(stateString);
-  } catch (error) {
-    console.log('ERROR storing')
+  _storeData(todos){
+    this.props.giveAppointments(todos)
   }
-}
 
-_retrieveTodos = async () => {
-  try {
-    const value = await AsyncStorage.getItem('appointments');
-    if (value !== null) {
-      todos2 = JSON.parse(value)
-      return todos2
-    }
-   } catch (error) {
-     console.log('ERROR retrieveing')
-     return null
-   }
-}
+  _retrieveTodos(){
+    try {
+      const value = this.props.appointmentList;
+      if (value !== null) {
+        return value
+      }
+     } catch (error) {
+       console.log('ERROR retrieveing')
+       return null
+     }
+  }
 
-_retrieveKeys = async () => {
-  try {
-    const value = await AsyncStorage.getItem('appNextKey');
-    if (value !== null) {
-      nextKey = JSON.parse(value)
-      return nextKey
-    }
-   } catch (error) {
-     console.log('ERROR retrieveing')
-     return null
-   }
-}
+  _retrieveKeys(){
+    try {
+      const value = this.props.nextKey;
+      if (value !== null) {
+        return value
+      }
+     } catch (error) {
+       console.log('ERROR retrieveing')
+       return null
+     }
+  }
 
   render() {
     return (
