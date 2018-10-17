@@ -15,10 +15,10 @@ I dette prosjektet valgte vi å lage en app som skal fungere som en personal mana
 -Daily Goals: ei «fast» list som er lik for kvar dag og visst ein klarer
  dagens mål får ein legge til ein på streaken sin som kjem til å vise kor 
  lenge ein har holdt Dayily Goals gående. Denne lista kjem til å 
- inneholde ein skritteller muligheit og 2 andre som ein kan vlge sjølv
+ inneholde ein skritteller muligheit og 2 andre som ein kan velge sjølv
 
- 
- 
+i tillegg til dette skal ein bruke asyncStorage til å lagre tasks og appointments til spesifikke datoer og bytte nye lister for kvar dato. I tillegg må streak og goal progression lagres asynkront. Slik at streak vil holde seg updatert til ei kvar tid. Vi valgte dette fordi vi tenkte dette kom til å bli ei god utfordring og løse oppgaven på ein god måte i tillegg til å faktisk vere eit nyttig produkt.
+
 
 
 ## DatePicker Library
