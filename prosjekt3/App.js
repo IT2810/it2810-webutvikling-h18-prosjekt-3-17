@@ -17,8 +17,6 @@ export default class App extends React.Component {
       <View style={styles.container}>
 
       <Streak/>
-
-
       </View>
     );
   }
@@ -29,5 +27,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+
   }
 });

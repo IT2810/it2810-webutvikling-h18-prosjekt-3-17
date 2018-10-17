@@ -6,6 +6,7 @@ import Tasks from './Tasks';
 import Appointments from './Appointments';
 import Goals from './Goals'
 import GoalModal from './GoalModal'
+import GetPedometer from './GetPedometer'
 import {Octicons} from '@expo/vector-icons'
 
 //imports a DateTimePicker library witch makes the usage of a DatePicker easier
@@ -51,8 +52,7 @@ export default class DatePicker extends React.Component {
       isVisible: false, //sets the pop up to hidden
       chosenDate: moment(datetime).format('dddd Do [\n] MMMM YYYY')//updates the choosen date
     })
-    originTime = moment(datetime), //updates unformated date
-    this.props.giveDate(originTime)
+    originTime = moment(datetime) //updates unformated date
   }
 
   hidePicker = () => {
@@ -73,6 +73,7 @@ export default class DatePicker extends React.Component {
       originTime = moment(originTime).add(1, 'day') // sets unformated date to the next day
       this.setState({
         chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY') //updates choosen date to new date
+
       }),
       this.props.giveDate(originTime)
       this.setState({storedData : [[],[]]})
@@ -170,6 +171,7 @@ export default class DatePicker extends React.Component {
     }
 
 
+
     //renders the headder banner with upOne,downOne, datepicker and streak
     //initializes the functions nessesary to opperate the DatePicker
   render() {
@@ -190,8 +192,10 @@ export default class DatePicker extends React.Component {
           datePickerModeAndroid={'spinner'}
         />
         <GoalModal/>
+        <GetPedometer/>
         <Tasks taskList={this.state.storedData[0]} nextKey={this.giveKeyT()} giveTasks={this.setStoredTasks.bind(this)}/>
         <Appointments style={{flex: 1}} appointmentList={this.state.storedData[1]} nextKey={this.giveKeyA()} giveAppointments={this.setStoredAppointments.bind(this)}/>
+
       </View>
     );
   }
@@ -206,10 +210,10 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   datepicker:{
+    maxHeight: 85,
     paddingTop: 20,
     maxHeight: 85,
     backgroundColor: 'black',
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
@@ -230,6 +234,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   container:{
+    flex:1,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

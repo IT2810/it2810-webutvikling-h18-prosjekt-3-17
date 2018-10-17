@@ -43,6 +43,7 @@ export default class GoalModal extends React.Component {
 
   render(){
     return (
+
       <View style={{marginTop: 22}}>
       <Text style={styles.header} >Goals</Text>
       <View style={styles.container}>
@@ -72,11 +73,14 @@ export default class GoalModal extends React.Component {
       </View>
 
         </View>
+
         <Modal
         animationType="fade"
         transparent={false}
         visible={this.state.modalVisible}
-        >
+        onRequestClose = { () => {
+          console.log('Modal was closed');
+        }}>
         <View style={{marginTop: 22}}>
           <View>
             <Goals setGoals={this.getGoals.bind(this)} />
