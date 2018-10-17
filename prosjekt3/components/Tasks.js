@@ -96,7 +96,13 @@ _retrieveTodos(){
   try {
     const value = this.props.taskList;
     if (value !== null) {
+<<<<<<< HEAD
       return value
+=======
+      todos2 = JSON.parse(value)
+      return todos2
+
+>>>>>>> f71789c0b33f451cea81312983cf38abba0d5d1c
     }
    } catch (error) {
      console.log('ERROR retrieveing')
