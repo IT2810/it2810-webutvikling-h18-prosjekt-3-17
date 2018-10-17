@@ -1,6 +1,6 @@
 import Expo from "expo";
 import React from "react";
-import {Text, View, Modal, TouchableHighlight} from "react-native";
+import {Text, View, Modal, TouchableHighlight, FlatList} from "react-native";
 import Goals from "./Goals";
 
 export default class GoalModal extends React.Component {
@@ -18,7 +18,9 @@ export default class GoalModal extends React.Component {
 
   render(){
     return (
+
       <View style={{marginTop: 22}}>
+
         <Modal
         animationType="fade"
         transparent={false}

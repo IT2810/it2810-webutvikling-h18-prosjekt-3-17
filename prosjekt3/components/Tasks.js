@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Alert, Button, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView, AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Check from './Check'
 import DeleteButton from './DeleteButton'
@@ -11,7 +11,7 @@ export default class Tasks extends React.Component {
       testText: 'Tasks',
       inputText: null,
       todos: [],
-      nextKey: 0
+      nextKey: 0,
     }
     this.myTextInput = React.createRef();
   }
@@ -30,6 +30,7 @@ export default class Tasks extends React.Component {
     });
 
     this.setState({todos: todos})
+    this._storeData(todos)
   }
 
   handleTextInput(txt){
@@ -39,8 +40,10 @@ export default class Tasks extends React.Component {
       todos2 = Array.from(this.state.todos);
       todos2.push(todo);
       this.setState({todos : todos2})
+
       this.myTextInput.current.clear();
     }
+    this._storeData(todos2)
   }
 
   deleteTask = (i) => {
@@ -49,6 +52,7 @@ export default class Tasks extends React.Component {
       todos2.splice(this.returnIndex(i), 1);
     }
     this.setState({todos: todos2});
+    this._storeData(todos2)
 
   }
 
@@ -61,10 +65,67 @@ export default class Tasks extends React.Component {
     return null;
   }
 
+  async componentDidMount(){
+    let todos = await this._retrieveTodos()
+    let nextKey = await this._retrieveKeys()
+    console.log("Todos: ")
+    console.log(todos)
+    if (todos === undefined){
+        this.setState({todos : []})
+    }
+    else{
+      this.setState({todos : todos})
+    }
+    if (nextKey === undefined){
+        this.setState({nextKey : 0})
+    }
+    else{
+      this.setState({nextKey : nextKey})
+    }
+  }
+
+  _storeData = async (todos) => {
+  try {
+    let stateString = JSON.stringify(todos)
+    await AsyncStorage.setItem('todos', stateString);
+    await AsyncStorage.setItem('toDoNextKey', JSON.stringify(this.state.nextKey));
+    console.log(stateString);
+  } catch (error) {
+    console.log('ERROR storing')
+  }
+}
+
+_retrieveTodos = async () => {
+  try {
+    const value = await AsyncStorage.getItem('todos');
+    if (value !== null) {
+      todos2 = JSON.parse(value)
+      return todos2
+
+    }
+   } catch (error) {
+     console.log('ERROR retrieveing')
+     return null
+   }
+}
+
+_retrieveKeys = async () => {
+  try {
+    const value = await AsyncStorage.getItem('toDoNextKey');
+    if (value !== null) {
+      nextKey = JSON.parse(value)
+      return nextKey
+    }
+   } catch (error) {
+     console.log('ERROR retrieveing')
+     return null
+   }
+}
+
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.header}>{this.state.testText}</Text>
         <TextInput
         ref={this.myTextInput}
@@ -89,7 +150,7 @@ export default class Tasks extends React.Component {
               </View>
           }
         />
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -100,7 +161,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20,
     paddingRight: 20,
-
   },
 
   text: {
@@ -109,7 +169,7 @@ const styles = StyleSheet.create({
 
   header: {
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold'
   },
   check: {
