@@ -6,6 +6,7 @@ import Tasks from './Tasks';
 import Appointments from './Appointments';
 import Goals from './Goals'
 import GoalModal from './GoalModal'
+import GetPedometer from './GetPedometer'
 import {Octicons} from '@expo/vector-icons'
 
 //imports a DateTimePicker library witch makes the usage of a DatePicker easier
@@ -82,6 +83,7 @@ export default class DatePicker extends React.Component {
           datePickerModeAndroid={'spinner'}
         />
         <GoalModal/>
+        <GetPedometer/>
         <Tasks date = {this.state.chosenDate}/>
         <Appointments style={{flex: 1}} />
       </View>
