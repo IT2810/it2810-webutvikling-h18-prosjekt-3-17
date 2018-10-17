@@ -31,8 +31,7 @@ export default class DatePicker extends React.Component {
       isVisible: false, //sets the pop up to hidden
       chosenDate: moment(datetime).format('dddd Do [\n] MMMM YYYY')//updates the choosen date
     })
-    originTime = moment(datetime), //updates unformated date
-    this.props.giveDate(originTime)
+    originTime = moment(datetime) //updates unformated date
   }
 
   hidePicker = () => {
@@ -52,17 +51,15 @@ export default class DatePicker extends React.Component {
       originTime = moment(originTime).add(1, 'day') // sets unformated date to the next day
       this.setState({
         chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY') //updates choosen date to new date
-      }),
-      this.props.giveDate(originTime)
-
+      })
   }
+
   downOne = () =>{
     originTime = moment(originTime).subtract(1, 'day') // sets unformated date to the day before
       this.setState({
         chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY') //updates choosen date to day before
-      }),
-      this.props.giveDate(originTime)
-    }
+      })
+  }
 
 
     //renders the headder banner with upOne,downOne, datepicker and streak
@@ -85,7 +82,7 @@ export default class DatePicker extends React.Component {
           datePickerModeAndroid={'spinner'}
         />
         <GoalModal/>
-        <Tasks />
+        <Tasks date = {this.state.chosenDate}/>
         <Appointments style={{flex: 1}} />
       </View>
     );

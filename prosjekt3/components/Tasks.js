@@ -101,6 +101,7 @@ _retrieveTodos = async () => {
     if (value !== null) {
       todos2 = JSON.parse(value)
       return todos2
+
     }
    } catch (error) {
      console.log('ERROR retrieveing')

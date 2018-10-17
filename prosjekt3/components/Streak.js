@@ -16,13 +16,6 @@ export default class Streak extends React.Component {
   }
   }
 
-  getDate(e){
-  //
-    this.setState({
-      days: e.diff(this.state.streakStart,'day')
-    })
-  }
-
 
   streakReset(el){
   //this function checks if yesterdays goals was achived and breaks the streak by setting streakstart to today
@@ -37,7 +30,7 @@ export default class Streak extends React.Component {
     return (
       <View style={{flex:1}}>
 
-        <DatePicker giveDate={this.getDate.bind(this)} streak={this.state.days}/>
+        <DatePicker streak={this.state.days}/>
 
       </View>
     );
