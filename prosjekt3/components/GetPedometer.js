@@ -28,7 +28,6 @@ export default class GetPedometer extends React.Component {
      });
    });
 
-
    const end = new Date();
    const start = new Date();
    start.setDate(end.getDate() - 1);

@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default class Check extends React.Component {
 
+// Returns checked box icon if it is supposed to be checked, and unchecked box icon if not
   isChecked(){
     if(this.props.checked === true){
       return <MaterialCommunityIcons name="checkbox-marked" size={20}/>;

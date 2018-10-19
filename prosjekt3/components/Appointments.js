@@ -17,6 +17,7 @@ export default class Appointments extends React.Component {
     this.myTextInput = React.createRef();
   }
 
+// Adds appointments to this date's list of them and saves.
   handleTextInput(txt){
     this.setState({todos : this._retrieveTodos()})
     if (txt != 0){
@@ -32,6 +33,7 @@ export default class Appointments extends React.Component {
     this._storeData(todos2)
   }
 
+  // Self explanatory
   deleteAppointment = (i) => {
     this.setState({todos : this._retrieveTodos()})
     todos2 = Array.from(this.state.todos);
@@ -43,6 +45,7 @@ export default class Appointments extends React.Component {
 
   }
 
+  // Help function to delete correct element
   returnIndex(el){
     for (i = 0; i < this.state.todos.length; i++){
       if(this.state.todos[i] === el){
@@ -52,14 +55,17 @@ export default class Appointments extends React.Component {
     return null;
   }
 
+// Simple setMethod for hour input field
   handleHour(el){
     this.setState({currHour : el})
   }
 
+// Simple setMethod for minute input field
   handleMinute(el){
     this.setState({currMinute : el})
   }
 
+  // Keeps Appointments-component updated with regard to what happens in it's Parent.
   componentDidUpdate(){
     let todos = this._retrieveTodos()
     let nextKey = this._retrieveKeys()
@@ -79,10 +85,12 @@ export default class Appointments extends React.Component {
     }
   }
 
+  // Sends data to Parent for storage
   _storeData(todos){
     this.props.giveAppointments(todos)
   }
 
+  // Retrieves data from Parent
   _retrieveTodos(){
     try {
       const value = this.props.appointmentList;
@@ -95,6 +103,7 @@ export default class Appointments extends React.Component {
      }
   }
 
+  // Retrieves key from Parent
   _retrieveKeys(){
     try {
       const value = this.props.nextKey;

@@ -34,11 +34,11 @@ export default class Goals extends React.Component {
       this.setState({goalOne: goalOne});
       this.setState({goalTwo: goalTwo});
       this.setState({goalThree: goalThree});
+      this.props.setGoals([goalOne, goalTwo, goalThree])
     } catch(error) {
         alert(error)
     }
   }
-
   handleGoalOne(text){
     this.setState({goalOne : text})
     let goals = [text, this.state.goalTwo, this.state.goalThree]
@@ -66,7 +66,7 @@ export default class Goals extends React.Component {
             <TextInput
               name="goalOne"
               type="text"
-              onChange={(event) => this.setState({goalOne: event.nativeEvent.text})}
+              onChange={(event) => this.handleGoalOne(event.nativeEvent.text)}
               value={this.state.goalOne}
               style={styles.textInputs}
             />
@@ -74,7 +74,7 @@ export default class Goals extends React.Component {
             <TextInput
               name="goalTwo"
               type="text"
-              onChange={(event) => this.setState({goalTwo: event.nativeEvent.text})}
+              onChange={(event) => this.handleGoalTwo(event.nativeEvent.text)}
               value={this.state.goalTwo}
               style={styles.textInputs}
             />
@@ -83,7 +83,7 @@ export default class Goals extends React.Component {
               name="goalThree"
               type="text"
               value={this.state.goalThree}
-              onChange={(event) => this.setState({goalThree: event.nativeEvent.text})}
+              onChange={(event) => this.handleGoalThree(event.nativeEvent.text)}
               style={styles.textInputs}
             />
 

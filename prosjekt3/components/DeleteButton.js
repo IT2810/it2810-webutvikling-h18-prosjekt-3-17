@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default class DeleteButton extends React.Component {
 
+// Simply returns a delete button icon
   render() {
     return (
       <View style={styles.container}>

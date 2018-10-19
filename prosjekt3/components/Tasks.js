@@ -16,7 +16,8 @@ export default class Tasks extends React.Component {
     this.myTextInput = React.createRef();
   }
 
-
+// Method is used every time someone presses a checkbutton or text that belongs to it.
+// It toggles the checkbutton and save state.
   handlePressCheck = (el) => {
     this.setState({todos : this._retrieveTodos()})
     const todos = this.state.todos.map(element => {
@@ -30,6 +31,7 @@ export default class Tasks extends React.Component {
     this._storeData(todos)
   }
 
+// Adds todo-elements to this date's list of them and saves.
   handleTextInput(txt){
     this.setState({todos : this._retrieveTodos()})
 
@@ -45,6 +47,7 @@ export default class Tasks extends React.Component {
     this._storeData(todos2)
   }
 
+// Self explanatory
   deleteTask = (i) => {
     this.setState({todos : this._retrieveTodos()})
     todos2 = Array.from(this.state.todos);
@@ -56,6 +59,7 @@ export default class Tasks extends React.Component {
 
   }
 
+// Help function to delete correct element
   returnIndex(el){
     for (i = 0; i < this.state.todos.length; i++){
       if(this.state.todos[i] === el){
@@ -65,6 +69,7 @@ export default class Tasks extends React.Component {
     return null;
   }
 
+// Keeps Task-component updated with regard to what happens in it's Parent.
   componentDidUpdate(){
     let todos = this._retrieveTodos()
     let nextKey = this._retrieveKeys()
@@ -84,10 +89,12 @@ export default class Tasks extends React.Component {
     }
   }
 
+// Sends data to Parent for storage
   _storeData(todos){
     this.props.giveTasks(todos)
   }
 
+// Retrieves data from Parent
 _retrieveTodos(){
   try {
     const value = this.props.taskList;
@@ -100,6 +107,7 @@ _retrieveTodos(){
    }
 }
 
+// Retrieves key from Parent
 _retrieveKeys(){
   try {
     const value = this.props.nextKey;
