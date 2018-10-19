@@ -27,7 +27,6 @@ export default class DatePicker extends React.Component {
     }
 
   }
-  // Method used by Child Tasks to set and save an updated todo-list
   setStoredTasks(item){
     data = Array.from(this.state.storedData)
     data[0] = item
@@ -35,8 +34,6 @@ export default class DatePicker extends React.Component {
     this._storeData(data)
 
   }
-
-  // Method used by Child Appointments to set and save an updated appointment-list
   setStoredAppointments(item){
     data = Array.from(this.state.storedData)
     data[1] = item
@@ -100,7 +97,6 @@ export default class DatePicker extends React.Component {
       }
     }
 
-    // Sets state to what it was the last time it was used.
     async componentDidMount(){
       let data = await this._retrieveData()
       if (data === undefined){
@@ -111,7 +107,6 @@ export default class DatePicker extends React.Component {
       }
     }
 
-// store method
     _storeData = async (storedData) => {
       try {
         let stateString = JSON.stringify(storedData)
@@ -120,7 +115,6 @@ export default class DatePicker extends React.Component {
       }
     }
 
-//receive method
     _retrieveData = async () => {
       try {
         const value = await AsyncStorage.getItem(this.generateStorageName());
@@ -133,13 +127,11 @@ export default class DatePicker extends React.Component {
        }
     }
 
-// Helper method for generating IDs for different dates to be used in storage
     generateStorageName(){
       let name = "date" + moment(originTime).format("L");
       return name;
     }
 
-// Helper method to give correct key to Todo-component
     giveKeyT(){
       if(this.state.storedData[0].length < 1){
         return 0;
@@ -148,8 +140,6 @@ export default class DatePicker extends React.Component {
         return this.state.storedData[0][this.state.storedData[0].length - 1].key
       }
     }
-
-// Helper method to give correct key to Appointments-component
     giveKeyA(){
       if(this.state.storedData[1].length < 1){
         return 0;
@@ -158,7 +148,6 @@ export default class DatePicker extends React.Component {
         return this.state.storedData[1][this.state.storedData[1].length - 1].key
       }
     }
-
 
 
     //renders the headder banner with upOne,downOne, datepicker and streak
@@ -183,6 +172,8 @@ export default class DatePicker extends React.Component {
         <GetPedometer />
         <ScrollView style={{flex: 1}}>
         <GoalModal/>
+
+
         <Tasks taskList={this.state.storedData[0]} nextKey={this.giveKeyT()} giveTasks={this.setStoredTasks.bind(this)}/>
         <Appointments style={{flex: 1}} appointmentList={this.state.storedData[1]} nextKey={this.giveKeyA()} giveAppointments={this.setStoredAppointments.bind(this)}/>
         </ ScrollView>

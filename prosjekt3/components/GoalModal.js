@@ -14,7 +14,7 @@ export default class GoalModal extends React.Component {
       checks: [false, false, false]
     };
     this._retrieveData()
-
+    console.log(this.state.checks);
   }
 
   setModalVisible(visible) {
@@ -58,7 +58,7 @@ export default class GoalModal extends React.Component {
     try {
       let val = await AsyncStorage.getItem('checks')
       let value = JSON.parse(val)
-      if(value === undefined){
+      if(value === null){
         this.setState({checks : [false, false, false]})
       }
       else{
