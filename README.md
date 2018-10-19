@@ -1,23 +1,23 @@
 # prosjekt-3 gruppe-17
 
 ## Appen
-I dette prosjektet valgte vi å lage en app som skal fungere som en personal manager. Appen kom til å inneholde 4 hoved element. 
+I dette prosjektet valgte vi å lage en app som skal fungere som en personal manager. Appen kom til å inneholde 4 hovedelementer. 
 
 -Datovelger: kan velge spesifikk dato ved hjelp av en kalender eller  
  kunne bruke piler for å gå fram og tilbake
 
--Tasks: liste som ein kan skrive inn ting ein må gjere og hake dei 
- Av når det er gjordt. Også mogleg å slette dei.
+-Tasks: liste som man kan skrive inn ting man må gjøre og hake de 
+ av når det er gjort. Også muglig å slette de.
 
--Appointments: ei liste der ein skriv inn eit tidspunkt og ein ting en 
- skal på det tidspunktet. Også mogleg å slette disse 
+-Appointments: ei liste der man skriver inn et tidspunkt og en ting man 
+ skal på det tidspunktet. Også muglig å slette disse 
 
--Daily Goals: ei «fast» list som er lik for kvar dag og visst ein klarer
- dagens mål får ein legge til ein på streaken sin som kjem til å vise kor 
- lenge ein har holdt Dayily Goals gående. Denne lista kjem til å 
- inneholde ein skritteller muligheit og 2 andre som ein kan velge sjølv
+-Daily Goals: ei «fast» liste som er lik for hver dag og hvis man klarer
+ dagens mål får man legge til en på streaken sin som kommer til å vise hvor 
+ lenge man har holdt Daily Goals gående. Denne lista kan 
+ inneholde en skritteller mulighet og 2 andre som ein kan velge selv
 
-i tillegg til dette skal ein bruke asyncStorage til å lagre tasks og appointments til spesifikke datoer og bytte nye lister for kvar dato. I tillegg må streak og goal progression lagres asynkront. Slik at streak vil holde seg updatert til ei kvar tid. Vi valgte dette fordi vi tenkte dette kom til å bli ei god utfordring og løse oppgaven på ein god måte i tillegg til å faktisk vere eit nyttig produkt.
+I tillegg til dette bruker vi asyncStorage til å lagre tasks og appointments til spesifikke datoer og bytte til nye lister for hver dato. Streak og goals lagres også asynkront. Slik at streak vil holde seg updatert til en hver tid. Vi valgte dette fordi vi tenkte dette kom til å bli en god utfordring som ville løse oppgaven på en fin måte i tillegg til å faktisk vere et nyttig produkt.
 
 
 
