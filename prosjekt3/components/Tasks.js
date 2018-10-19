@@ -17,10 +17,6 @@ export default class Tasks extends React.Component {
   }
 
 
-  handlePressButton(){
-    alert('press');
-  }
-
   handlePressCheck = (el) => {
     this.setState({todos : this._retrieveTodos()})
     const todos = this.state.todos.map(element => {
@@ -96,13 +92,7 @@ _retrieveTodos(){
   try {
     const value = this.props.taskList;
     if (value !== null) {
-<<<<<<< HEAD
       return value
-=======
-      todos2 = JSON.parse(value)
-      return todos2
-
->>>>>>> f71789c0b33f451cea81312983cf38abba0d5d1c
     }
    } catch (error) {
      console.log('ERROR retrieveing')
@@ -175,6 +165,7 @@ const styles = StyleSheet.create({
   },
   check: {
     flexDirection: 'row',
+    flex: 6
   },
   list: {
     height: 200

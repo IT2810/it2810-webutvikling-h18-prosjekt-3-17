@@ -2,7 +2,6 @@ import Expo from "expo";
 import React from "react";
 import {Text, View, TextInput, Button, AsyncStorage} from "react-native";
 
-//A class that lets you add and change your personal motivational goals
 export default class Goals extends React.Component {
   constructor(props){
     super(props);
@@ -42,19 +41,16 @@ export default class Goals extends React.Component {
     this.setState({goalOne : text})
     let goals = [text, this.state.goalTwo, this.state.goalThree]
     this.props.setGoals(goals)
-    console.log('handledGoalOne')
   }
   handleGoalTwo(text){
     this.setState({goalTwo : text})
     let goals = [this.state.goalOne, text, this.state.goalThree]
     this.props.setGoals(goals)
-    console.log('handledGoalTwo')
   }
   handleGoalThree(text){
     this.setState({goalThree : text})
     let goals = [this.state.goalOne, this.state.goalTwo, text]
     this.props.setGoals(goals)
-    console.log('handledGoalThree')
   }
 
 

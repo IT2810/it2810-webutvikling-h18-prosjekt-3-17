@@ -1,6 +1,6 @@
 import Expo from "expo";
 import React from "react";
-import {Text, View, Modal, TouchableHighlight, FlatList, StyleSheet, TouchableWithoutFeedback} from "react-native";
+import {Text, View, Modal, TouchableHighlight, FlatList, StyleSheet, TouchableWithoutFeedback, AsyncStorage} from "react-native";
 import Goals from "./Goals";
 import Check from './Check'
 
@@ -9,10 +9,12 @@ export default class GoalModal extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      modalVisible: false,
+      modalVisible: true,
       goals: [],
       checks: [false, false, false]
     };
+    this._retrieveData()
+
   }
 
   setModalVisible(visible) {
@@ -20,32 +22,59 @@ export default class GoalModal extends React.Component {
   }
 
   getGoals(goals){
-    console.log(goals)
-    console.log(goals[0])
-    console.log(goals[1])
-    console.log(goals[2])
     this.setState({goals: goals})
   }
-  getChecks(checks){
-    console.log(checks)
-    console.log(checks[0])
-    console.log(checks[1])
-    console.log(checks[2])
-    this.setState({checks: checks})
-  }
+
   handlePressCheck = (el) => {
-    checks = Array.from(this.state.checks);
-    console.log(el)
-    console.log(checks[el])
+    checks = []
+    checks.push(this.state.checks[0])
+    checks.push(this.state.checks[1])
+    checks.push(this.state.checks[2])
     checks[el] = !checks[el]
     this.setState({checks: checks})
+    this._storeChecks(checks)
   }
+
+  _storeChecks = async (checks) => {
+    try {
+      let stateString = JSON.stringify(checks)
+      await AsyncStorage.setItem('checks', stateString)
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  componentDidMount = async() => {
+    this.setState({modalVisible: false})
+
+  }
+
+
+  _retrieveData = async() => {
+    try {
+      let val = await AsyncStorage.getItem('checks')
+      let value = JSON.parse(val)
+      if(value === undefined){
+        this.setState({checks : [false, false, false]})
+      }
+      else{
+        this.setState({checks : value})
+      }
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  componentWillUnmount(){
+    this.setState({modalVisible : false})
+  }
+
 
   render(){
     return (
 
-      <View style={{marginTop: 22}}>
-      <Text style={styles.header} >Goals</Text>
+      <View style={{marginTop: 22, paddingLeft: 20, paddingRight: 20}}>
+      <Text style={styles.header} >Goals of today</Text>
       <View style={styles.container}>
       <View style={styles.check}>
       <TouchableWithoutFeedback onPress={() => this.handlePressCheck(0)}  >
@@ -98,7 +127,7 @@ export default class GoalModal extends React.Component {
           onPress = { () => {
             this.setModalVisible(true);
           }}>
-          <View style={{backgroundColor: 'lightgrey', width: 70, padding: 5,}}>
+          <View style={{backgroundColor: 'lightgrey', width: 70, padding: 5}}>
           <Text style={{textAlign: 'center'}}>Set Goals</Text>
           </View>
         </TouchableHighlight>

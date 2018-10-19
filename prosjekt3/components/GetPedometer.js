@@ -48,7 +48,7 @@ export default class GetPedometer extends React.Component {
      this.setState({
        currentStepCount: result.steps
      });
-   }); 
+   });
 
    // if (GoogleApiClient != null) {
    //   GoogleApiClient.connect();
