@@ -157,6 +157,11 @@ await AsyncStorage.getItem( -- ID -- )
 
 Denne er det også lurt å sette i en try/catch. Det finnes flere metoder som kan være greit å bruke innen AsyncStorage, men dette er det grunnleggende som man trenger for å bare kunne hente og lagre en string. Ellers kan det være greit å vite at man bare kan lagre strings. Andre elementer kan gjøres om til strings ved JSON.stringify( -- element -- ), men da er det viktig å huske å parse det etterpå slik at du får elementet ditt når du henter det, og ikke en string-representant av det. Dette gjøres ved JSON.parse( -- string-version of your element -- ).
 
+## Expo pedometer
+Når det kom til innhenting av ekstern data valgte vi å ha en skritteller i appen. Vi brukte Expos innebygde pedometer bibliotek for å hente inn skrittverdier fra en mobiltelefon. Biblioteket har støtte både for android og ios, men krever Google Fit (android) eller Core Motion (ios) for å hente inn verdiene. 
+
+## Testing
+Når det kom til testing hadde gruppa litt problemer når det kom til testing på ios, da alle på gruppa har android. Programmet virker dermed på android, men litt uvisst på ios. Men det skal i teorien ikke være noen stor forskjell å kjøre appen på ios (med unntak av forskjellene på komponentene i Expo), da vi ikke har brukt noen android spesifike biblioteker. 
 
 
 ## Icons from @expo/vector-icons
