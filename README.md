@@ -166,9 +166,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 Her er MaterialCommunityIcons bare den "pakken" av icons som vi brukte for check-boksene våre. På denne siden, https://expo.github.io/vector-icons/ , kan du finne en oversikt over alle iconene du kan bruke fra @expo/vector-icons. Der ser du dem i formatet: icon, navn, pakke. Så det du vil importere er det siste navnet på linjen med det iconet du vil bruke. For å rendere iconet skriver du:
 
-<MaterialCommunityIcons name="checkbox-blank-outline" size={20} />
+< -- navn på pakke -- name=" -- navn på icon -- " size={20} />
 
-der MaterialCommunityIcons igjen er pakken vi brukte, name finner du fra dictionaryen nevnt tidligere. I tillegg til size er det flere andre attributter du kan endre om du ønsker det. En som sikkert er grei å kunne endre på er farge, og det går det fint an å endre ved å legge til en color="" -- ønsket farge -- "".
+Navet til iconet du vil bruke finner du fra dictionaryen som er nevnt tidligere. I tillegg til size er det flere andre attributter du kan endre om du ønsker det. En som sikkert er grei å kunne endre på er farge, og det går det fint an å endre ved å legge til en color="" -- ønsket farge -- "".
 
 
 
