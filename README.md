@@ -130,7 +130,31 @@ TouchableWithoutFeedBack brukte vi i prosjektet for å kunne checke av en boks b
 
 
 ## AsyncStorage
+AsyncStorage er en enkel måte å lagre data lokalt på en enhet. Du lagrer det du vil på en id som du bestemmer slik:
 
+await AsyncStorage.setItem( -- ID --, -- Det du vil lagre --)
+
+For å bruke AsyncStorage må du først importere den på samme måte som du gjør med andre ferdige react-native komponenter. Deretter må du gjøre funksjonen du skal bruke det i async. Dette gjorde vi sånn:
+
+store_method = async ( -- eventuell input -- ) => {}
+
+Inni klammene har du all koden du vil ha i metoden. Her kan du både lagre og hente.
+
+Det kan være en god idé å sette henting og lagring av data i en try/catch for å forhindre krasj om noe skulle skje galt. Her er et eksempel på hva som kan stå i en enkel lagrings-metode:
+
+try {
+      let myString = JSON.stringify(-- input fra metoden --)
+      await AsyncStorage.setItem( -- ID --, stateString)
+    } 
+catch (error) {
+      alert(error)
+    }
+    
+For å hente data bruker man linjen:
+
+await AsyncStorage.getItem( -- ID -- )
+
+Denne er det også lurt å sette i en try/catch. Det finnes flere metoder som kan være greit å bruke innen AsyncStorage, men dette er det grunnleggende som man trenger for å bare kunne hente og lagre en string. Ellers kan det være greit å vite at man bare kan lagre strings. Andre elementer kan gjøres om til strings ved JSON.stringify( -- element -- ), men da er det viktig å huske å parse det etterpå slik at du får elementet ditt når du henter det, og ikke en string-representant av det. Dette gjøres ved JSON.parse( -- string-version of your element -- ).
 
 
 
