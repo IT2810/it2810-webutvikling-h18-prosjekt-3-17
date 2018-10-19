@@ -73,13 +73,8 @@ export default class GoalModal extends React.Component {
   render(){
     return (
 
-<<<<<<< HEAD
       <View style={{marginTop: 22, paddingLeft: 20, paddingRight: 20}}>
       <Text style={styles.header} >Goals of today</Text>
-=======
-      <View style={{marginTop: 22}}>
-      <Text style={styles.header} >Goals</Text>
->>>>>>> de41329eee69f573de68050a7768206ecfecb0d2
       <View style={styles.container}>
       <View style={styles.check}>
       <TouchableWithoutFeedback onPress={() => this.handlePressCheck(0)}  >
@@ -107,10 +102,7 @@ export default class GoalModal extends React.Component {
       </View>
 
         </View>
-<<<<<<< HEAD
-=======
 
->>>>>>> de41329eee69f573de68050a7768206ecfecb0d2
         <Modal
         animationType="fade"
         transparent={false}
@@ -136,7 +128,7 @@ export default class GoalModal extends React.Component {
           onPress = { () => {
             this.setModalVisible(true);
           }}>
-          <View style={{backgroundColor: 'lightgrey', width: 70, padding: 5}}>
+          <View style={{backgroundColor: 'lightgrey', width: 70, padding: 5, alignItems: 'center',}}>
           <Text style={{textAlign: 'center'}}>Set Goals</Text>
           </View>
         </TouchableHighlight>
