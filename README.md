@@ -103,7 +103,18 @@ Dette er grunnleggende itroduksjon til Moment.js for full documentsajon, guide o
 
 
 ## FlatList og ScrollView
+FlatList og ScrollView er to forskjellige måter å vise scroll-bart materiale. Vi brukte begge deler i prosjektet fordi de har ulik kompleksitet som passer i forskjellige situasjoner.
 
+ScrollView er en enkel substitusjon for et vanlig View, som gjør at du kan scrolle. Den er ikke mer komplisert enn det. Du importerer den på samme måte som andre ferdige react-komponenter fra react-native. Deretter kan du sette den inn <ScrollView> </ScrollView> rundt de elementene som du ønsker kan scrolles gjennom. I appen vår har vi brukt ScrollView rundt komponentene "GoalModal", "Tasks" og "Appointments".
+
+Flatlist er en litt mer kompleks komponent som passer bedre for oppgaver som ikke er så statiske som den forrige. Vi brukte Flatlist for to do elementer og avtaler fordi disse kommer i ulike mengder.
+Flatlist blir også importert som en vanlig ferdig react-komponent. Når du bruker den setter du <FlatList></Flatlist> rundt det som skal kunne blas gjennom. Den funksjonaliteten fra FlatList som vi har brukt er muligheten for å iterere gjennom en liste og rendere alle elementene i den scroll-bare FlatListen. Dette gjør du ved å sette 
+
+<Flatlist data={ -- Der du vil hente dataene fra -- } renderItem={({item}) => 
+
+-- mellom her skal alt stå som skal renderes i Flatlisten
+ 
+ }/>
 
 
 
