@@ -163,6 +163,9 @@ Når det kom til innhenting av ekstern data valgte vi å ha en skritteller i app
 ## Testing
 Når det kom til testing hadde gruppa litt problemer når det kom til testing på ios, da alle på gruppa har android. Programmet virker dermed på android, men litt uvisst på ios. Men det skal i teorien ikke være noen stor forskjell å kjøre appen på ios (med unntak av forskjellene på komponentene i Expo), da vi ikke har brukt noen android spesifike biblioteker. 
 
+Jest
+Når det kom til å skrive tester i Jest hadde ingen i gruppa noen særlig erfaring med å skrive tester. Dette resulterte i at vi i tidsklemma ikke klarte/rakk å skrive fungerende tester for appen vår.
+
 
 ## Icons from @expo/vector-icons
 Vi brukte icons i appen for å slippe å bruke knapper over alt. Dette var veldig enkelt, da bare brukte icons som allerede finnes i expo. Du setter inn en import-linje som ser slik ut: 
