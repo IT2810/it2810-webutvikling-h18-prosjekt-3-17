@@ -119,7 +119,13 @@ Flatlist blir også importert som en vanlig ferdig react-komponent. Når du bruk
 
 
 ## TouchableWithoutFeedBack
+TouchableWithoutFeedBack brukte vi i prosjektet for å kunne checke av en boks både når vi trykker på boksen, og på teksten. Det går an å ha onPress={} på TouchableWithoutFeedBack, men ikke på ikoner returnert av en annen komponent, så vi måtte uansett ha lagt ikonet i en annen komponent for å kunne bruke det som en knapp. For å bruke TouchableWithoutFeedBack på samme måte som vi gjorde trenger du bare å gjøre dette:
 
+<TouchableWithoutFeedback onPress={ -- Det du trenger at onPress gjør -- }>
+ 
+ -- Her finner du de komponentene som du ønsker å bruke onPress={} på.
+ 
+</TouchableWithoutFeedback>
 
 
 
