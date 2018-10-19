@@ -19,6 +19,7 @@ I dette prosjektet valgte vi å lage en app som skal fungere som en personal man
 
 I tillegg til dette bruker vi asyncStorage til å lagre tasks og appointments til spesifikke datoer og bytte til nye lister for hver dato. Streak og goals lagres også asynkront. Slik at streak vil holde seg updatert til en hver tid. Vi valgte dette fordi vi tenkte dette kom til å bli en god utfordring som ville løse oppgaven på en fin måte i tillegg til å faktisk vere et nyttig produkt.
 
+Vi er klar over at det kommer opp en Warning når du åpner appen med expo. Dette er noe vi ville fikset om vi skulle jobbet videre med prosjektet. Slik som det er nå gjør den så vidt vi har forstått ingen skade. Det er en warning som kommer opp på grunn av en quickfix når vi ville finne en løsning for å få tak i Goals uten at en bruker må inn og redigere dem først. Den blir nemlig ikke renderet når den er invisible, og dette gjør at vi ikke får tak i data som er lagret der. Hadde dette vært en lengre sprint hadde vi gjort endringer i Goals og Goalmodals slik at ikke informasjon om tidligere satte Goals er avhengig av å åpne opp å redigere. Quickfixen var bare å åpne og lukke menyen der du endrer goals fort i konstruktør og componentDidMount.
 
 
 ## DatePicker Library
