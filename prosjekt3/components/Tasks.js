@@ -17,10 +17,6 @@ export default class Tasks extends React.Component {
   }
 
 
-  handlePressButton(){
-    alert('press');
-  }
-
   handlePressCheck = (el) => {
     this.setState({todos : this._retrieveTodos()})
     const todos = this.state.todos.map(element => {
@@ -169,6 +165,7 @@ const styles = StyleSheet.create({
   },
   check: {
     flexDirection: 'row',
+    flex: 6
   },
   list: {
     height: 200

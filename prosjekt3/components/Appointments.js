@@ -17,11 +17,6 @@ export default class Appointments extends React.Component {
     this.myTextInput = React.createRef();
   }
 
-
-  handlePressButton(){
-    alert('press');
-  }
-
   handleTextInput(txt){
     this.setState({todos : this._retrieveTodos()})
     if (txt != 0){
@@ -176,6 +171,7 @@ const styles = StyleSheet.create({
   },
   check: {
     flexDirection: 'row',
+    flex: 6
   },
   list: {
     height: 200
