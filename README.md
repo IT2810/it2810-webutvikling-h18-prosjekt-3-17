@@ -23,7 +23,7 @@ Vi er klar over at det kommer opp en Warning når du åpner appen med expo. Dett
 
 
 ## DatePicker Library
-DatePicker bibloteket kombinerer DatePickerAndroid, TimePickerAndroid og DatePickerIOS. Som gjer at datePicker komponenten skal fungere på android og IOS I tillegg til at den er modal som gjer at ein får ein profesjonell følelse av den. For å instalere bibloteket må man skrive I konsollet:
+DatePicker biblioteket kombinerer DatePickerAndroid, TimePickerAndroid og DatePickerIOS. Som gjer at datePicker komponenten skal fungere på android og IOS I tillegg til at den er modal som gjer at ein får ein profesjonell følelse av den. For å instalere biblioteket må man skrive I konsollet:
 
 *npm install --save react-native-modal-datetime-picker*
 
