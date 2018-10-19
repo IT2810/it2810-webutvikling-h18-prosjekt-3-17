@@ -1,6 +1,6 @@
 # prosjekt-3 gruppe-17
 
-Appen
+## Appen
 I dette prosjektet valgte vi å lage en app som skal fungere som en personal manager. Appen kom til å inneholde 4 hoved element. 
 
 -Datovelger: kan velge spesifikk dato ved hjelp av en kalender eller  
