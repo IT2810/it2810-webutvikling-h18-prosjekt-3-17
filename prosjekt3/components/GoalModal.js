@@ -99,7 +99,7 @@ export default class GoalModal extends React.Component {
           onPress = { () => {
             this.setModalVisible(true);
           }}>
-          <View style={{backgroundColor: 'lightgrey', width: 70, padding: 5,}}>
+          <View style={{backgroundColor: 'lightgrey', width: 70, padding: 5, alignItems: 'center',}}>
           <Text style={{textAlign: 'center'}}>Set Goals</Text>
           </View>
         </TouchableHighlight>
