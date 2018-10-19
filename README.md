@@ -100,3 +100,24 @@ det er samme dag. Denne funksjonen vil gi ein true eller false output
 
 Dette er grunnleggende itroduksjon til Moment.js for full documentsajon, guide og troubleshooting gå til https://momentjs.com for meir informasjon.
 
+
+
+## FlatList og ScrollView
+
+
+
+
+## TouchableWithoutFeedBack
+
+
+
+
+## AsyncStorage
+
+
+
+
+## Icons from @expo/vector-icons
+
+
+
