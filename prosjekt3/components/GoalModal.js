@@ -25,6 +25,7 @@ export default class GoalModal extends React.Component {
     this.setState({goals: goals})
   }
 
+// Saves checked/unchecked boxes Daily Goals
   handlePressCheck = (el) => {
     checks = []
     checks.push(this.state.checks[0])
@@ -35,6 +36,7 @@ export default class GoalModal extends React.Component {
     this._storeChecks(checks)
   }
 
+// save method
   _storeChecks = async (checks) => {
     try {
       let stateString = JSON.stringify(checks)
@@ -44,12 +46,14 @@ export default class GoalModal extends React.Component {
     }
   }
 
+// Only used as quickfix to get info from Goals before it is rendered
   componentDidMount = async() => {
     this.setState({modalVisible: false})
 
   }
 
 
+// load method
   _retrieveData = async() => {
     try {
       let val = await AsyncStorage.getItem('checks')
