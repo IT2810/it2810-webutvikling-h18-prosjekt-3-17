@@ -67,6 +67,7 @@ export default class DatePicker extends React.Component {
       originTime = moment(originTime).add(1, 'day') // sets unformated date to the next day
       this.setState({
         chosenDate: moment(originTime).format('dddd Do [\n] MMMM YYYY') //updates choosen date to new date
+
       }),
       //this.props.giveDate(originTime)
       this.setState({storedData : [[],[]]})
@@ -147,6 +148,10 @@ export default class DatePicker extends React.Component {
         return this.state.storedData[1][this.state.storedData[1].length - 1].key
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> de41329eee69f573de68050a7768206ecfecb0d2
 
 
     //renders the headder banner with upOne,downOne, datepicker and streak
@@ -171,10 +176,17 @@ export default class DatePicker extends React.Component {
         <GetPedometer />
         <ScrollView style={{flex: 1}}>
         <GoalModal/>
+<<<<<<< HEAD
 
         <Tasks taskList={this.state.storedData[0]} nextKey={this.giveKeyT()} giveTasks={this.setStoredTasks.bind(this)}/>
         <Appointments style={{flex: 1}} appointmentList={this.state.storedData[1]} nextKey={this.giveKeyA()} giveAppointments={this.setStoredAppointments.bind(this)}/>
         </ ScrollView>
+=======
+        <GetPedometer/>
+        <Tasks taskList={this.state.storedData[0]} nextKey={this.giveKeyT()} giveTasks={this.setStoredTasks.bind(this)}/>
+        <Appointments style={{flex: 1}} appointmentList={this.state.storedData[1]} nextKey={this.giveKeyA()} giveAppointments={this.setStoredAppointments.bind(this)}/>
+
+>>>>>>> de41329eee69f573de68050a7768206ecfecb0d2
       </View>
     );
   }
